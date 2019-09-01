@@ -1,0 +1,171 @@
+<settings>
+    <servers>
+        <server>
+            <id>maven-public</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+		<server>
+            <id>maven-releases</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+		<server>
+            <id>maven-snapshots</id>
+            <username>admin</username>
+            <password>admin123</password>
+        </server>
+    </servers>
+<!--
+    <mirrors>
+        <mirror>
+            <id>nexus</id>
+            <mirrorOf>*</mirrorOf>
+            <url>http://172.30.20.54:8081/repository/maven-public</url>
+            <name>nexus</name>
+        </mirror>
+    </mirrors>
+-->
+    <profiles>
+			<profile>
+			<id>dev</id>
+			<!--
+				Es importante respetar el orden de los repositorios ya que busca en
+				el orden en que aparecen en este archivo
+			-->
+			<repositories>
+				<repository>
+					<id>cetral.maven</id>
+					<url>http://central.maven.org/maven2/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>com.springsource.repository.maven.snapshot</id>
+					<url>http://repo.spring.io/release/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>org.ocpsoft.rewrite</id>
+					<url>http://www.ocpsoft.org/rewrite/</url>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>codelds</id>
+					<url>http://code.lds.org/nexus/content/groups/main-repo/</url>
+				</repository>
+				<repository>
+					<id>prime-repo</id>
+					<name>PrimeFaces Maven Repository</name>
+					<url>http://repository.primefaces.org</url>
+					<layout>default</layout>
+				</repository>
+			</repositories>
+		</profile>
+	<profile>
+      <id>redhat-ga-repository</id>
+      <repositories>
+        <repository>
+          <id>redhat-ga-repository</id>
+          <name>Red Hat GA repository</name>
+          <url>http://maven.repository.redhat.com/ga/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>redhat-ga-repository</id>
+          <name>Red Hat GA repository</name>
+          <url>http://maven.repository.redhat.com/ga/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+	<profile>
+      <id>datanucleus</id>
+      <repositories>
+        <repository>
+          <id>datanucleus</id>
+          <name>Datanucleus</name>
+          <url>http://www.datanucleus.org/downloads/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>datanucleus</id>
+          <name>Datanucleus</name>
+          <url>http://www.datanucleus.org/downloads/maven2/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+            <updatePolicy>daily</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+<!--         <profile> -->
+<!--             <id>nexus</id> -->
+<!--             <repositories> -->
+<!--                 <repository> -->
+<!--                     <id>central</id> -->
+<!--                     <url>http://172.30.20.54:8081/repository/maven-public</url> -->
+<!--                     <releases> -->
+<!--                         <enabled>true</enabled> -->
+<!--                     </releases> -->
+<!--                     <snapshots> -->
+<!--                         <enabled>true</enabled> -->
+<!--                     </snapshots> -->
+<!--                 </repository> -->
+<!--             </repositories> -->
+<!--             <pluginRepositories> -->
+<!--                 <pluginRepository> -->
+<!--                     <id>central</id> -->
+<!--                     <url>http://172.30.20.54:8081/repository/maven-public</url> -->
+<!--                     <releases> -->
+<!--                         <enabled>true</enabled> -->
+<!--                     </releases> -->
+<!--                     <snapshots> -->
+<!--                         <enabled>true</enabled> -->
+<!--                     </snapshots> -->
+<!--                 </pluginRepository> -->
+<!--             </pluginRepositories> -->
+<!--         </profile>  -->
+    </profiles>
+    <activeProfiles>
+		<activeProfile>dev</activeProfile>
+		<activeProfile>redhat-ga-repository</activeProfile>
+		<activeProfile>datanucleus</activeProfile>
+		<activeProfile>nexus</activeProfile> 
+	</activeProfiles>    
+</settings>
+
